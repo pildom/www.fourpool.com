@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <script type="text/javascript">
+      function update() {
+        var xmlHttp
+        try { // Firefox, Opera, Safari
+          xmlHttp = new XMLHttpRequest()
+        } catch(e) { // frickin IE
+          try {
+            xmlHttp = new ActiveXObject("Msxml2.XMLHTTP")
+          } catch(e) {
+            try {
+              xmlHttp = new ActiveXObject("Microsoft.XMLHTTP")
+            } catch(e) {
+              alert("Your browser does not support AJAX")
+              return false
+            }
+          }
+        }
+        xmlHttp.onreadystatechange = function() {
+          if(xmlHttp.readyState == 4) 
+            document.getElementById("updateSection").innerHTML = xmlHttp.responseText
+        }
+        xmlHttp.open("POST", "cgi-bin/ajax.cgi", true)
+        xmlHttp.send(null)
+        
+      } 
+    </script>
+  </head>
+  <body>
+    <h1>AJAX test</h1>
+    <p>Mouseover the AJAX logo to get the current time from the server, <em>asynchronously</em>.</p>
+    <img src="img/ajax_logo.png" onmouseover="update()"/>
+    <p><span id="updateSection"></span></p>
+  </body>
+</html>

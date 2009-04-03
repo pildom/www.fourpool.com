@@ -1,0 +1,54 @@
+body, h1, h2, h3, h4, div#orly {
+  font-family: verdana, arial, sans-serif;
+  font-weight: normal;
+}
+
+body {
+  background-image: url("../img/regexp_owl.gif");
+}
+
+h1 {
+  color: white;
+	font-size: 50px;
+}
+
+h2 {
+ color: #008b8b;
+}
+
+div#wrapper {
+  width: 700px;
+  margin: auto;
+  background-color: white;
+  border: thick solid black;
+}
+
+div#header {
+  background-color: #008b8b;
+}
+
+div#content {
+  padding: 10px;
+}
+
+div#formatted_string {
+  font-size: 30px;
+  font-style: italic;
+}
+
+span#orly {
+  font-size: 20px;
+  font-style: italic;
+  color: #990066;
+}
+
+span#regexp_text {
+	font-size: 130%;
+	color: #990066;
+}
+
+.textfield_name {
+  font-size: 25px;
+  color: #104e8b;
+  margin-bottom: 0;
+}

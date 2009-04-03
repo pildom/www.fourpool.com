@@ -1,0 +1,70 @@
+div#wrapper {
+  width: 550px;
+  margin: auto;
+  border: medium solid black;
+}
+
+div#header {
+  //background-color: #c0c0c0;
+}
+
+div#links {
+  font-size: 20px;
+  background-color: #c0c0c0;
+}
+
+h1, h2, h3, p, #links {
+  font-family: verdana, arial, sans;
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 110px;
+  text-align: center;
+  color: #900000;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+h3 {
+  text-align: right;
+  margin-top: 0;
+  padding-right: 3;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  font-size: 40px;
+  text-align: center;
+}
+
+ul {
+  margin-bottom: 0;
+}
+
+#awaken {
+  font-weight: bold;
+  font-style: italic;
+  color: #ee4000;
+}
+
+#glory {
+  color: #7d26cd;  
+}
+
+#overmind {
+  font-size: 110%;
+  color: #2e8b57;
+}
+
+#swarm {
+  font-weight: bold;
+  color: #cd4f39;
+}
+
+#me {
+  color: #00868b;
+}
