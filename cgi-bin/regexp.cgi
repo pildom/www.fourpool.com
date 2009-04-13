@@ -18,15 +18,15 @@ m = s.match(Regexp.new(r))
         cgi.body {
           cgi.div({"id"=>"wrapper"}) {
             cgi.div({"id"=>"header"}) {
-              cgi.img("../img/regexp_owl.gif") +
-              cgi.span("id"=>"orly") {"orly?"} +
-              cgi.h1 { "Regular Expressions Online" }
+             # cgi.img("../img/regexp_owl.gif") +
+             # cgi.span("id"=>"orly") {"orly?"} +
+              cgi.h1 { "Try Regular Expressions" }
             } +
             cgi.div({"id"=>"content"}) {
               cgi.form {
-                cgi.p({"class"=>"textfield_name"}) { "String to be Regexp'd: " } +
-                cgi.text_field({"name"=>"s", "value"=>s, "size"=>"80"}) + "\n" +
-                cgi.p({"class"=>"textfield_name"}) { "Regular Expression: " } +
+                cgi.p({"class"=>"textfield_name"}) { "String" } +
+                cgi.textarea({"name"=>"s", "value"=>s, "cols"=>"80", "rows"=>"20"}) +
+                cgi.p({"class"=>"textfield_name"}) { "Regular Expression" } +
                 cgi.text_field({"name"=>"r", "value"=>r, "size"=>"80"}) +
                 cgi.submit({"value"=>"do it"})
               } +

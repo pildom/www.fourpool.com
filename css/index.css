@@ -1,5 +1,5 @@
 div#wrapper {
-  width: 550px;
+  width:550px;
   margin: auto;
   border: medium solid black;
 }
@@ -45,26 +45,20 @@ ul {
   margin-bottom: 0;
 }
 
-#awaken {
-  font-weight: bold;
-  font-style: italic;
-  color: #ee4000;
-}
-
-#glory {
+#purple {
   color: #7d26cd;  
 }
 
-#overmind {
+#green {
   font-size: 110%;
   color: #2e8b57;
 }
 
-#swarm {
+#orange {
   font-weight: bold;
   color: #cd4f39;
 }
 
-#me {
+#teal {
   color: #00868b;
 }
