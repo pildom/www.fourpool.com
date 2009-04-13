@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <script type="text/javascript">
+      var twitterSearchQuery = "http://search.twitter.com/trends/current.json?exclude=hashtags&callback=processTwitterJson";
+      var flickrApiKey = "4c88151846f1c6aa5db921c934a69ab5";
+      var twitterKeywords = [];
+      var flickrPictureURLs = [];
+
+      function unixTimeToDate(unixTime) {
+        var date = new Date();
+        date.setTime(unixTime * 1000);
+        return date;
+      }
+
+      function digitFormat(toFormat, numDigits) {
+        toFormat += "";
+        while (toFormat.length < numDigits) {
+          toFormat = "0" + toFormat;
+        }
+        return toFormat;
+      }   
+
+      function generateDateKey(date) {
+        var year = digitFormat(date.getUTCFullYear(), 4);
+        var month = digitFormat(date.getUTCMonth() + 1, 2);
+        var day = digitFormat(date.getUTCDate(), 2);
+        var hour = digitFormat(date.getUTCHours(), 2);
+        var minute = digitFormat(date.getUTCMinutes(), 2);
+        var second = digitFormat(date.getUTCSeconds(), 2);
+
+        return year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
+      }
+
+      function loadJson(url) {
+        var head = document.getElementsByTagName("head")[0];
+        var newScript = document.createElement("script");
+        newScript.type = "text/javascript";
+        newScript.src = url;
+        head.appendChild(newScript);
+      }
+
+      function processTwitterJson(json) {
+        var dateKey = generateDateKey(unixTimeToDate(json.as_of));
+        var searchNames = json.trends[dateKey];
+        for(var i = 0; i < searchNames.length; i++) {
+          var searchName = searchNames[i].name;
+          twitterKeywords.push(searchName);
+          loadJson("http://api.flickr.com/services/rest/?format=json&method=flickr.photos.search&api_key=" + flickrApiKey + "&text=" + searchName + "&sort=relevance&per_page=1&jsoncallback=processFlickrJson");
+        }
+      }
+
+      function processFlickrJson(json) {
+        var photo = json.photos.photo[0];
+        var farm = photo.farm;
+        var server = photo.server;
+        var id = photo.id;
+        var secret = photo.secret;
+        var size = "m";
+        
+        var imgUrl = "http://farm"+farm+".static.flickr.com/"+server+"/"+id+"_"+secret+"_"+size+".jpg";
+        flickrPictureURLs.push(imgUrl);
+      }
+
+      function populatePage() {
+        var contentDiv = document.getElementById("content");
+        contentDiv.innerHTML = "<ul>";
+        for(var i = 0; i < twitterKeywords.length; i++) {
+          contentDiv.innerHTML += "<li>";
+          contentDiv.innerHTML += "<h2>" + twitterKeywords[i] + "</h3><img src=\"" + flickrPictureURLs[i] + "\"/>";
+          contentDiv.innerHTML += "</li>";
+        }
+        contentDiv.innerHTML += "</ul>";
+      }
+
+      loadJson(twitterSearchQuery);
+
+    </script>
+
+    <title>Twitter Mashup</title>
+  </head>
+  <body onload = "populatePage()">
+    <h1>Current Twitter Trends + Flickr</h1>
+    <div id="content"></div>
+  </body>
+</html>
