@@ -27,7 +27,7 @@ m = s.match(Regexp.new(r))
                 cgi.p({"class"=>"textfield_name"}) { "String" } +
                 cgi.textarea({"name"=>"s", "value"=>s, "cols"=>"80", "rows"=>"20"}) +
                 cgi.p({"class"=>"textfield_name"}) { "Regular Expression" } +
-                cgi.text_field({"name"=>"r", "value"=>r, "size"=>"80"}) +
+                cgi.text_field({"name"=>"r", "value"=>r, "size"=>"40"}) +
                 cgi.submit({"value"=>"do it"})
               } +
               cgi.div({"id"=>"formatted_string"}) {
