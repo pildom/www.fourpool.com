@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="css/raise_the_roof.css"/>
+    <script type="text/javascript">
+      var up = "`o`";
+      var down = "-o-";
+      var count = 0;
+      function raise() {
+        document.getElementById("content").innerHTML = (count++ % 2 == 0 ? up : down);
+        setTimeout("raise()", 1000);
+      }
+    </script>    
+  </head>
+  <body onload="raise()">
+    <div id="content"></div>
+  </body>
+</html>
